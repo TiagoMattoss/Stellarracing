@@ -634,12 +634,29 @@ button{
 }
 
 .container__ship-card{
-  background-image: url("../img/ships_cards/ship_lengendary_one.gif") ;
+  background-image: url("../img/new_ships/epic_one.gif");
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: 100% 100%; /* Resize the background image to cover the entire container */
   width: 220px;
   height: 70%;
   border-radius: .8rem ;
+  display: grid;
+  align-items: end;
+}
+
+.ships__status{
+  display: grid; 
+  grid-template-columns: 1fr 1fr; padding: 30px;
+}
+
+.ship__status_item{
+  display: flex;
+  margin: 0px 0px 8px 0px;
+  justify-content: space-evenly;
+}
+
+.ship__status_item img {
+  width: 13px;
 }
 
 .container__ship-item{
