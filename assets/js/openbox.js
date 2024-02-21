@@ -260,7 +260,9 @@ function addElement(img) {
 
     // create a new div element
     const linkButtonRefuel = document.createElement('a');
-    const refuelText = document.createTextNode("REFUEL");
+    // const refuelText = document.createTextNode("REFUEL");]
+    const refuelText = document.createElement("img");
+    refuelText.setAttribute("src", `assets/img/Botao_refuel.png` )
     linkButtonRefuel.setAttribute('class', 'button button--refuel');
     linkButtonRefuel.appendChild(refuelText);
     
