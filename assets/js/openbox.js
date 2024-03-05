@@ -1,5 +1,8 @@
-const myShips = [];
+// window.onload = x();
+var myShips = [];
 // import Logo from '../img/icones/1';
+
+// import * as save from './storage';
 
 const ships = [
     {
@@ -70,22 +73,27 @@ const ships = [
     },
 ]
 
+
 function abrirbox(){
     const claim =  document.getElementById('btnbtn');
     const randomElement = ships[Math.floor(Math.random() * ships.length)];
     myShips.push(randomElement);
-
-
-
+ 
+    localStorage.setItem('ships', JSON.stringify(myShips));
     console.log(myShips);
     addElement(randomElement);
-    x()
+    y();
 }
 
-const shi = null
+// import  save  from './storage';
 
-const x = () =>{
-    
+const windowLoad = () =>{
+    if(localStorage.hasOwnProperty('ships')){
+        const aux = JSON.parse(localStorage.getItem('ships'));
+    //    save('teste', 'testado');
+       myShips = aux;
+    }
+
     if(!myShips.length){
         console.log('renderiza h2');
         return
@@ -94,6 +102,24 @@ const x = () =>{
     const divNaves =  document.getElementById('ships');
     textNoShips.style.display = "none";
     console.log('renderiza nave');
+    myShips.forEach(myShips => {
+        addElement(myShips)
+    });
+}
+
+const y = () =>{
+    if(localStorage.hasOwnProperty('ships')){
+        const aux = JSON.parse(localStorage.getItem('ships'));
+       myShips = aux;
+    }
+
+    if(!myShips.length){
+        console.log('renderiza h2');
+        return
+    }
+    const textNoShips =  document.getElementById('text-no-ships');
+    const divNaves =  document.getElementById('ships');
+    textNoShips.style.display = "none";
 }
 
 function mudar(){
@@ -110,7 +136,6 @@ function mudar(){
 }
 
 function fetchsvg(image){
-        
     fetch(image.src).then((response) => response.text()).then((response) => {
         const span = document.createElement('span');
         span.innerHTML = response;
@@ -119,11 +144,8 @@ function fetchsvg(image){
 };
 
 
-
-
 function addElement(img) {
-
-    
+  
     // create a new div element
     const shipItem = document.createElement("div");
     shipItem.classList.add("container__ship-item");
@@ -234,7 +256,6 @@ function addElement(img) {
     fuel_container.appendChild(fuel_status)	
 
     
-
     ships__status_one.appendChild(power_container);
     ships__status_one.appendChild(speed_container);
     ships__status_one.appendChild(boost_container);
@@ -248,41 +269,43 @@ function addElement(img) {
 
     shipCard.appendChild(ships__status);
 
-
-
-
-    
-
-    
     
     const divButtons = document.createElement("div");
     divButtons.classList.add("container__butons_ship");
 
     // create a new div element
     const linkButtonRefuel = document.createElement('a');
-    // const refuelText = document.createTextNode("REFUEL");]
-    const refuelText = document.createElement("img");
-    refuelText.setAttribute("src", `assets/img/Botao_refuel.png` )
-    linkButtonRefuel.setAttribute('class', 'button button--refuel');
-    linkButtonRefuel.appendChild(refuelText);
+    const refuelImgButton = document.createElement("img");
+    refuelImgButton.setAttribute("src", `assets/img/btn_refuel.png` );
+    refuelImgButton.setAttribute('class', 'button_shipsl');
+    linkButtonRefuel.setAttribute('class', 'button_shipsl');
+    linkButtonRefuel.appendChild(refuelImgButton);
     
     // create a new div element
     const linkButtonClaim = document.createElement('a');
-    const claimText = document.createTextNode("CLAIM");
-    linkButtonClaim.setAttribute('class', 'button button--claim');
-    linkButtonClaim.appendChild(claimText);
+    const claimImgButton = document.createElement("img");
+    claimImgButton.setAttribute("src", `assets/img/btn_claim.png` );
+    claimImgButton.setAttribute('class', 'button_shipsl');
+    linkButtonClaim.setAttribute('class', 'button_shipsl');
+    linkButtonClaim.appendChild(claimImgButton);
 
     // create a new div element
     const linkButtonRace = document.createElement('a');
-    const raceText = document.createTextNode("RACE");
-    linkButtonRace.setAttribute('class', 'button button--race');
-    linkButtonRace.appendChild(raceText);
+    const raceImgButton = document.createElement("img");
+    raceImgButton.setAttribute("src", `assets/img/btn_race.png` );
+    raceImgButton.setAttribute('class', 'button_shipsl');
+    linkButtonRace.setAttribute('class', 'button_shipsl');
+    linkButtonRace.setAttribute('onclick', `race('${img.elo}')`)
+    linkButtonRace.setAttribute('href', `#`)
+    linkButtonRace.appendChild(raceImgButton);
 
     // create a new div element
     const linkButtonRaceAll = document.createElement('a');
-    const raceAllText = document.createTextNode("RACE ALL");
-    linkButtonRaceAll.setAttribute('class', 'button');
-    linkButtonRaceAll.appendChild(raceAllText);
+    const raceAllImgButton = document.createElement("img");
+    raceAllImgButton.setAttribute("src", `assets/img/btn_all.png` );
+    raceAllImgButton.setAttribute('class', 'button_shipsl');
+    linkButtonRaceAll.setAttribute('class', 'button_shipsl');
+    linkButtonRaceAll.appendChild(raceAllImgButton);
 
     divButtons.appendChild(linkButtonRefuel);
     divButtons.appendChild(linkButtonClaim);
@@ -296,48 +319,12 @@ function addElement(img) {
     // add the newly created element and its content into the DOM
     const currentDiv = document.getElementById("ships");
     currentDiv.appendChild(shipItem);
-    // document.body.insertBefore(newDiv, currentDiv);
   }
 
-
-function addStatusCard(){
-
-
+function race(elo){
+    localStorage.setItem('race', elo);
+    window.location.href = "file:///C:/Users/Lucas%20Correa/Documents/GitHub/Stellarracing/race.html#";
 }
 
 
-x();
-
-
-const componente = 
-`<svg 
-xmlns="http://www.w3.org/2000/svg" 
-xmlns:xlink="http://www.w3.org/1999/xlink" 
-width="480" zoomAndPan="magnify" 
-iewBox="0 0 360 525.000007" 
-height="700" 
-preserveAspectRatio="xMidYMid meet" 
-version="1.0"
-id="tst"
->
-<defs>
-<clipPath 
-    id="1e06eccd57"
->
-    <path 
-        d="M 50.382812 345.863281 L 64.609375 345.863281 L 64.609375 369 L 50.382812 369 Z M 50.382812 345.863281 " 
-        clip-rule="nonzero"
-    />
-</clipPath>
-</defs>
-    <g clip-path="url(#1e06eccd57)">
-        <path
-            id="test" 
-            fill="#175ed1" 
-            d="M 50.851562 359 L 56.558594 359 C 56.679688 359 56.800781 359.054688 56.875 359.152344 C 56.953125 359.246094 56.984375 359.375 56.957031 359.496094 L 54.984375 368.710938 C 54.980469 368.730469 54.972656 368.777344 55.03125 368.804688 C 55.09375 368.832031 55.121094 368.796875 55.132812 368.777344 L 64.242188 356.40625 C 64.339844 356.273438 64.355469 356.109375 64.28125 355.960938 C 64.207031 355.816406 64.0625 355.730469 63.902344 355.730469 L 58.195312 355.730469 C 58.070312 355.730469 57.953125 355.671875 57.875 355.578125 C 57.796875 355.480469 57.765625 355.355469 57.792969 355.234375 L 59.765625 346.019531 C 59.773438 346 59.78125 345.953125 59.722656 345.925781 C 59.703125 345.921875 59.691406 345.917969 59.679688 345.917969 C 59.648438 345.917969 59.628906 345.9375 59.621094 345.953125 L 50.511719 358.324219 C 50.414062 358.457031 50.398438 358.621094 50.472656 358.765625 C 50.546875 358.914062 50.6875 359 50.851562 359 " 
-            fill-opacity="1" 
-         fill-rule="nonzero"/>
-    </g>
-</svg>
-
-`;
+windowLoad();

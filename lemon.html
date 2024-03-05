@@ -44,7 +44,7 @@
                         </li> -->
 
                     <li class="nav__item">
-                        <a href="#new" class="nav__link nav__item" onClick="abrirbox()">Buy Box
+                        <a id="box_button" class="nav__link nav__item" onClick="abrirbox()">Buy Box
                             <img src="assets/img/box_clean.png" alt="" class="nav__logo-box">
                         </a>
 
@@ -70,11 +70,9 @@
     <main class="main">
         
         <section class="section discount">
-            <button id="butt">shshsh</button>
-            <!-- <img src="assets/img/6.svg" alt="" style="width: 200px;"> -->
             <div id='ships'class="ships__container container grid">
                 <H2 id="text-no-ships">You don't own any ships</H2>
-                <!-- <div class="container__ship-item">
+                <div class="container__ship-item">
                     <div class="container__ship-card" >
                         <div class="ships__status" >
                             <div class="ships_status_col">
@@ -114,47 +112,21 @@
                         </div>
                     </div>
                     <div class="container__butons_ship">
-                        <a target="#" href="#" class="button button--refuel" onclick="mudar()">REFUEL</a>
-                        <a target="#" href="#" id="btnbtn" class="button button--claim">CLAIM</a>
-                        <a target="#" href="#" class="button button--race">RACE</a>
-                        <a target="#" href="#" class="button ">RACE ALL</a>
-                    </div>
-                </div> -->
 
-                <!-- <div class="container__ship-item">
-                    <div class="container__ship-card">        
+                        <a target="#" href="#" class="button_ships" onclick="mudar()">
+                            <img class="button_ships" src="assets/img/btn_refuel.png" alt="" > 
+                        </a>
+                        <a target="#" href="#" id="btnbtn" class="button_ships">
+                            <img class="button_ships" src="assets/img/btn_claim.png" alt="" > 
+                        </a>
+                        <a target="#" href="#" class="button_ships " onclick="race('hi')">
+                            <img class="button_ships" src="assets/img/btn_race.png" alt="" > 
+                        </a>
+                        <a target="#" href="#" class="button_ships ">
+                            <img class="button_ships" src="assets/img/btn_all.png" alt="" > 
+                        </a>
                     </div>
-                    <div class="container__butons_ship">
-                        <a target="#" href="#" class="button button--refuel">REFUEL</a>
-                        <a target="#" href="#" class="button button--claim">CLAIM</a>
-                        <a target="#" href="#" class="button button--race">RACE</a>
-                        <a target="#" href="#" class="button ">RACE ALL</a>
-                    </div>
-                </div> -->
-
-                <!-- <div class="container__ship-item">
-                    <div class="container__ship-card">
-                        
-                    </div>
-                    <div class="container__butons_ship">
-                        <a target="#" href="#" class="button button--refuel">REFUEL</a>
-                        <a target="#" href="#" class="button button--claim">CLAIM</a>
-                        <a target="#" href="#" class="button button--race">RACE</a>
-                        <a target="#" href="#" class="button ">RACE ALL</a>
-                    </div>
-                </div> -->
-                
-                <!-- <div class="container__ship-item">
-                    <div class="container__ship-card">
-                        
-                    </div>
-                    <div class="container__butons_ship">
-                        <a target="#" href="#" class="button button--refuel">REFUEL</a>
-                        <a target="#" href="#" class="button button--claim">CLAIM</a>
-                        <a target="#" href="#" class="button button--race">RACE</a>
-                        <a target="#" href="#" class="button ">RACE ALL</a>
-                    </div>
-                </div> -->
+                </div>
 
             </div>
             <dialog id="dialog">
@@ -271,7 +243,8 @@
     <!--=============== MAIN JS ===============-->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/openbox.js"></script>
-    <script src="assets/js/race.js"></script>
+    <!-- <script src="assets/js/race.js"></script> -->
+
     <script src="https://app.embed.im/snow.js" defer></script>
 </body>
 

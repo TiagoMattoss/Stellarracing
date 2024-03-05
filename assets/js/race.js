@@ -1,4 +1,31 @@
-window.onload = init();
+var ship_info = [
+    {
+        name: 'common',
+        img:'common',
+    },
+    {
+        name: 'rare',
+        img:'rare',
+    },
+    {
+        name: 'super-rare',
+        img: 'super_rare',
+    },
+    {
+        name: 'epic',
+        img: 'epic',
+    },
+    {
+        name: 'legendary',
+        img: 'legendary',
+    },
+    {
+        name: 'super-legendary',
+        img: 'super_legendary',
+    },
+]
+
+
 
 var animation;
 
@@ -12,13 +39,65 @@ var first_base = false;
 var second_base = false;
 var last_base = false;
 
-function init(){
-    var ship_one = document.getElementById("ship_one");
-    var ship_two = document.getElementById("ship_two");
-    var ship_three = document.getElementById("ship_three");
-    var ship_four = document.getElementById("ship_four");
-    var ship_five = document.getElementById("ship_five");
-    var ship_six = document.getElementById("ship_six");
+
+{/* <img id="ship_one" src="assets/img/race/ships/ship_legendary.png" > */}
+function creatElementsRacer(type_ship){
+    // const type = type_ship;
+    const race = document.getElementById('track');
+    const line1 = document.createElement('img');
+    const line = document.createElement('img');
+    line.setAttribute('src', 'assets/img/race/line.png');
+    line.setAttribute('class', 'line');
+    line1.setAttribute('src', 'assets/img/race/line.png');
+    line1.setAttribute('class', 'line');
+    const player_ship = document.createElement('img');
+    const player_ship_img = ship_info.find((ship) => {
+        return ship.name === type_ship;
+    });
+    player_ship.setAttribute('src', `assets/img/race/ships/ship_${player_ship_img.img}.png`);
+    ship_info.splice(ship_info.findIndex(i => i.name == type_ship), 1);
+    console.log('arraayy',ship_info);
+    const streak = speed(5,0);
+    race.appendChild(line1);
+    for (let i=0; i<6; i++)  {
+        console.log('looop', i)
+        const num = i.toString();
+        let aux2 = 'ship_'+num;
+        if(i == streak){
+            player_ship.setAttribute('id', aux2);
+            race.appendChild(player_ship);
+        }else{
+            const aux = document.createElement('img');
+            let ship = ship_info[Math.floor(Math.random() * ship_info.length)];
+            aux.setAttribute('src', `assets/img/race/ships/ship_${ship.img}.png`);
+            aux.setAttribute('id', aux2)
+            race.appendChild(aux);
+        
+        }
+    }
+    race.appendChild(line);
+
+
+
+
+    // player_ship.setAttribute('id', $[param]);
+
+
+}
+
+
+function init(ships){
+    
+    console.log(localStorage.getItem('race'))
+    creatElementsRacer(localStorage.getItem('race'));
+
+
+    var ship_one = document.getElementById("ship_0");
+    var ship_two = document.getElementById("ship_1");
+    var ship_three = document.getElementById("ship_2");
+    var ship_four = document.getElementById("ship_3");
+    var ship_five = document.getElementById("ship_4");
+    var ship_six = document.getElementById("ship_5");
 
     ship_one.style.position = "relative";
     ship_one.style.right = "0px"
@@ -43,20 +122,6 @@ function speed(max, min){
     return Math.floor(Math.random() * (max - min +1)) + min;
 }
 
-
-1
-2
-3
-4
-5
-
-function firstBase(id){
-    
-    id = speed();
-   
-}
-
-
 function move(){
 
     // const one_speed = 2;
@@ -68,15 +133,15 @@ function move(){
 
 
     const div = document.getElementById("track").getBoundingClientRect();
-    const ship = document.getElementById("ship_one").getBoundingClientRect().width;
+    const ship = document.getElementById("ship_0").getBoundingClientRect().width;
     console.log('esse é o meu tamanho em wish: '+div.width);
     var animation;
-    var ship_one = document.getElementById("ship_one");
-    var ship_two = document.getElementById("ship_two");
-    var ship_tree = document.getElementById("ship_tree");
-    var ship_four = document.getElementById("ship_four");
-    var ship_five = document.getElementById("ship_five");
-    var ship_six = document.getElementById("ship_six");
+    var ship_one = document.getElementById("ship_0");
+    var ship_two = document.getElementById("ship_1");
+    var ship_three = document.getElementById("ship_2");
+    var ship_four = document.getElementById("ship_3");
+    var ship_five = document.getElementById("ship_4");
+    var ship_six = document.getElementById("ship_5");
     
 
 
@@ -146,3 +211,5 @@ function move(){
 // botton.onclick = function (){
 //     modal.showModal();
 // }
+
+window.onload = init();
